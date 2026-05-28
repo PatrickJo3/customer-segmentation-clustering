@@ -48,18 +48,18 @@ Selain itu, kolom CustomerID diubah menjadi tipe integer dan kolom InvoiceNo diu
 
 ## Feature Engineering
 
-Pada tahap feature engineering, dibuat beberapa fitur baru dari data transaksi. Fitur utama yang digunakan dalam proses clustering adalah:
+Pada tahap feature engineering, dilakukan pembuatan beberapa fitur baru dari data transaksi agar data dapat dianalisis pada level pelanggan. Pertama, dibuat fitur TotalPrice dari hasil perkalian antara Quantity dan UnitPrice untuk menghitung total nilai transaksi pada setiap baris data.
 
-* **Recency**: menunjukkan jumlah hari sejak pelanggan terakhir melakukan transaksi.
-* **Frequency**: menunjukkan jumlah transaksi unik yang dilakukan oleh pelanggan.
-* **Monetary**: menunjukkan total nilai pembelian pelanggan.
+Setelah itu, data transaksi dikelompokkan berdasarkan CustomerID untuk membentuk data per pelanggan. Dari proses tersebut, dibuat beberapa fitur seperti:
 
-Selain fitur RFM, dibuat juga beberapa fitur tambahan seperti:
+Recency: jumlah hari sejak pelanggan terakhir melakukan transaksi.
+Frequency: jumlah transaksi unik yang dilakukan oleh pelanggan.
+Monetary: total nilai pembelian pelanggan.
+TotalQuantity: total jumlah produk yang dibeli pelanggan.
+UniqueProduct: jumlah jenis produk berbeda yang pernah dibeli pelanggan.
+AverageOrderValue: rata-rata nilai pembelian pelanggan pada setiap transaksi.
 
-* **TotalPrice**: hasil perkalian antara Quantity dan UnitPrice.
-* **TotalQuantity**: total jumlah barang yang dibeli pelanggan.
-* **UniqueProduct**: jumlah jenis produk berbeda yang pernah dibeli pelanggan.
-* **AverageOrderValue**: rata-rata nilai pembelian pelanggan dalam setiap transaksi.
+Namun, setelah dilakukan analisis korelasi antar fitur, ditemukan adanya fitur yang memiliki korelasi tinggi. Oleh karena itu, tidak semua fitur tambahan digunakan sebagai input akhir untuk model clustering. Fitur final yang digunakan dalam proses clustering adalah fitur RFM, yaitu Recency, Frequency, dan Monetary, karena ketiga fitur tersebut sudah cukup merepresentasikan perilaku transaksi pelanggan.
 
 ## Exploratory Data Analysis
 
@@ -69,9 +69,14 @@ Hasil pengecekan skewness menunjukkan bahwa beberapa fitur memiliki distribusi y
 
 ## Modeling
 
-Algoritma yang digunakan dalam project ini adalah **K-Means Clustering**. Sebelum model dibuat, data terlebih dahulu melalui proses scaling menggunakan **StandardScaler** agar setiap fitur memiliki skala yang seimbang.
+## Modeling
 
-Jumlah cluster optimal ditentukan dengan membandingkan nilai **Silhouette Score** dari beberapa nilai K, yaitu dari K=2 sampai K=10. Berdasarkan hasil pengujian, jumlah cluster terbaik adalah:
+Model clustering dibuat menggunakan algoritma **K-Means Clustering**. Fitur yang digunakan sebagai input model adalah fitur **RFM**, yaitu `Recency`, `Frequency`, dan `Monetary`.
+
+Pemilihan fitur RFM dilakukan karena ketiga fitur tersebut dapat merepresentasikan perilaku pelanggan dari sisi waktu transaksi terakhir, jumlah transaksi, dan total nilai pembelian. Selain itu, penggunaan fitur RFM juga bertujuan untuk mengurangi penggunaan fitur yang saling berkorelasi tinggi, sehingga proses clustering menjadi lebih fokus dan tidak terlalu dipengaruhi oleh informasi yang berulang.
+
+Sebelum proses modeling, fitur RFM terlebih dahulu melalui tahap transformasi dan scaling agar distribusi data menjadi lebih baik dan setiap fitur memiliki skala yang seimbang. Setelah itu, dilakukan penentuan jumlah cluster optimal dan pembuatan model menggunakan K-Means.
+
 
 ```text
 K optimal: 2
