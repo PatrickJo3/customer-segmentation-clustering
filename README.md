@@ -53,11 +53,11 @@ Pada tahap feature engineering, dilakukan pembuatan beberapa fitur baru dari dat
 Setelah itu, data transaksi dikelompokkan berdasarkan CustomerID untuk membentuk data per pelanggan. Dari proses tersebut, dibuat beberapa fitur seperti:
 
 - Recency: jumlah hari sejak pelanggan terakhir melakukan transaksi.
-Frequency: jumlah transaksi unik yang dilakukan oleh pelanggan.
-Monetary: total nilai pembelian pelanggan.
-TotalQuantity: total jumlah produk yang dibeli pelanggan.
-UniqueProduct: jumlah jenis produk berbeda yang pernah dibeli pelanggan.
-AverageOrderValue: rata-rata nilai pembelian pelanggan pada setiap transaksi.
+- Frequency: jumlah transaksi unik yang dilakukan oleh pelanggan.
+- Monetary: total nilai pembelian pelanggan.
+- TotalQuantity: total jumlah produk yang dibeli pelanggan.
+- UniqueProduct: jumlah jenis produk berbeda yang pernah dibeli pelanggan.
+- AverageOrderValue: rata-rata nilai pembelian pelanggan pada setiap transaksi.
 
 Namun, setelah dilakukan analisis korelasi antar fitur, ditemukan adanya fitur yang memiliki korelasi tinggi. Oleh karena itu, tidak semua fitur tambahan digunakan sebagai input akhir untuk model clustering. Fitur final yang digunakan dalam proses clustering adalah fitur RFM, yaitu Recency, Frequency, dan Monetary, karena ketiga fitur tersebut sudah cukup merepresentasikan perilaku transaksi pelanggan.
 
