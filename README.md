@@ -52,7 +52,7 @@ Pada tahap feature engineering, dilakukan pembuatan beberapa fitur baru dari dat
 
 Setelah itu, data transaksi dikelompokkan berdasarkan CustomerID untuk membentuk data per pelanggan. Dari proses tersebut, dibuat beberapa fitur seperti:
 
-Recency: jumlah hari sejak pelanggan terakhir melakukan transaksi.
+- Recency: jumlah hari sejak pelanggan terakhir melakukan transaksi.
 Frequency: jumlah transaksi unik yang dilakukan oleh pelanggan.
 Monetary: total nilai pembelian pelanggan.
 TotalQuantity: total jumlah produk yang dibeli pelanggan.
