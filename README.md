@@ -69,8 +69,6 @@ Hasil pengecekan skewness menunjukkan bahwa beberapa fitur memiliki distribusi y
 
 ## Modeling
 
-## Modeling
-
 Model clustering dibuat menggunakan algoritma **K-Means Clustering**. Fitur yang digunakan sebagai input model adalah fitur **RFM**, yaitu `Recency`, `Frequency`, dan `Monetary`.
 
 Pemilihan fitur RFM dilakukan karena ketiga fitur tersebut dapat merepresentasikan perilaku pelanggan dari sisi waktu transaksi terakhir, jumlah transaksi, dan total nilai pembelian. Selain itu, penggunaan fitur RFM juga bertujuan untuk mengurangi penggunaan fitur yang saling berkorelasi tinggi, sehingga proses clustering menjadi lebih fokus dan tidak terlalu dipengaruhi oleh informasi yang berulang.
